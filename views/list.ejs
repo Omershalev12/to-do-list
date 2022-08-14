@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- font awsome -->
+    <script src="https://kit.fontawesome.com/2162e94ef7.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="box" id="heading">
+        <h1><%= day %></h1>
+    </div>
+    
+    <div class="box">
+        <% for(let i = 0; i<items.length; i++){ %> <!--using the <% %> to write logic in our html (ejs) file, needs to be written for every line of non html code.-->
+            <div class="item">
+                <input type="checkbox">
+                <p><%= items[i] %></p>
+                <form action="/" method="post">
+                    <button class="fa-solid fa-minus erase" name="button" value="<%= i %>"></button> <!-- uses the i from the for loop as a counter in order to erase the relevant item from the list-->
+                </form>
+            </div>
+        <% } %>
+        <form action="/" method="post" class="item">
+            <input type="text" name="addItemToList" placeholder="New Item" autocomplete="off">
+            <Button type="submit" class="button" value = "add" name="button">+</Button>
+        </form>
+    </div>
+
+</body>
+</html>
