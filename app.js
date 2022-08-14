@@ -2,6 +2,7 @@
 
 const express = require("express");
 const https = require("https");
+const date = require(__dirname + "/date.js"); //requires the module date.js that was created in our project.
 
 const app = express();
 app.set('view engine', 'ejs'); //let us use the ejs module in order to 
@@ -12,11 +13,7 @@ app.use(express.static("public")); // used to specify a folder as the one that c
 var items = [];
 
 app.get("/", function(req, res){
-    var today = new Date();
-    var day = "";
-    var weekDays = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    var months = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
-    var day = weekDays[today.getDay()] + ", " + months[today.getMonth()] + " " + today.getDate();
+    let day = date();
     res.render('list', {day: day, items: items}); // this function looks for a ejs file called "list" inside the views folder.
 });
 
