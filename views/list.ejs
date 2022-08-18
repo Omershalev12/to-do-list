@@ -21,14 +21,14 @@
         <% for(let i = 0; i<items.length; i++){ %> <!--using the <% %> to write logic in our html (ejs) file, needs to be written for every line of non html code.-->
             <div class="item">
                 <input type="checkbox">
-                <p><%= items[i] %></p>
+                <p><%= items[i].name %></p>
                 <form action="/" method="post">
                     <button class="fa-solid fa-minus erase" name="button" value="<%= i %>"></button> <!-- uses the i from the for loop as a counter in order to erase the relevant item from the list-->
                 </form>
             </div>
         <% } %>
         <form action="/" method="post" class="item">
-            <input type="text" name="addItemToList" placeholder="New Item" autocomplete="off">
+            <input type="text" name="addItemToList" placeholder="New Item" autocomplete="off" required autofocus>
             <Button type="submit" class="button" value = "add" name="button">+</Button>
         </form>
     </div>
